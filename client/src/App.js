@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
+import Imdb from "./Movies/Imdb";
 
 export default class App extends Component {
   constructor() {
@@ -50,6 +51,7 @@ export default class App extends Component {
             />
           )}
         />
+        <Route exact path="/imdb" component={Imdb} />
       </div>
     );
   }
