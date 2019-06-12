@@ -23,7 +23,13 @@ export default class App extends Component {
 
     if (!saveChecker) {
       savedList.push(movie);
-    } else savedList.splice(savedList.indexOf(movie));
+      //adds selected movie to the saved list if it isn't already there.
+    } else
+      savedList.splice(
+        savedList.findIndex(savedMovie => savedMovie.id === movie.id),
+        1
+        //if it is already saved...this maps the array to find the index of the savedMovie that matches our selected movie. It then removes that spot on the saved list.
+      );
 
     this.setState({ savedList });
   };
@@ -37,7 +43,11 @@ export default class App extends Component {
           exact
           path="/movies/:id"
           render={props => (
-            <Movie {...props} addToSavedList={this.addToSavedList} />
+            <Movie
+              {...props}
+              {...this.state}
+              addToSavedList={this.addToSavedList}
+            />
           )}
         />
       </div>
