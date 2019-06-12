@@ -55,6 +55,6 @@ export default class Movie extends Component {
         </div>
       </div>
     );
-    //if the movie exists on our saved list, the button will display Saved. If the movie on our saved list, the button will say Save.
+    //if the movie exists on our saved list, the button will display Saved. If the movie isn't on our saved list, the button will say Save.
   }
 }

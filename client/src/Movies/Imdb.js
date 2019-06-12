@@ -15,7 +15,12 @@ class Imdb extends React.Component {
       .then(res => res.json())
       .then(result => {
         this.setState({
-          movieList: new Array(result)
+          movieList: new Array({
+            title: result.Title,
+            director: result.Director,
+            id: result.imdbID,
+            metascore: result.Metascore
+          })
         });
       });
   };
@@ -29,13 +34,13 @@ class Imdb extends React.Component {
       <div>
         {this.state.movieList.map(movie => {
           return (
-            <div key={movie.imdbID} className="movie-card">
-              <h2>{movie.Title}</h2>
+            <div key={movie.id} className="movie-card">
+              <h2>{movie.title}</h2>
               <div className="movie-director">
-                Director: <em>{movie.Director}</em>
+                Director: <em>{movie.director}</em>
               </div>
               <div className="movie-metascore">
-                Metascore: <strong>{movie.Metascore}</strong>
+                Metascore: <strong>{movie.metascore}</strong>
               </div>
             </div>
           );
